@@ -9,6 +9,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: 4.6.1
   http: 0.13.4
+  change_app_package_name: 1.0.0
   flutter: 
     sdk: flutter
 
