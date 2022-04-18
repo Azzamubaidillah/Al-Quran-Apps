@@ -1,3 +1,4 @@
+import 'package:alquran/app/data/models/surah.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -11,19 +12,39 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('HomeView'),
+        title: const Text('HomeView'),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: 20,
-        itemBuilder: (context, index) => ListTile(
-          leading: CircleAvatar(
-            child: Text("${index + 1}"),
-          ),
-          title: Text("Surah Al - ...."),
-          subtitle: Text("7 Ayat | Mekah"),
-          trailing: Text("Tulisan Arab"),
-        ),
+      body: FutureBuilder<List<Surah>>(
+        future: controller.getAllSurah(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (!snapshot.hasData) {
+            return const Center(
+              child: Text("Tidak ada data"),
+            );
+          }
+
+          return ListView.builder(
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              Surah surah = snapshot.data![index];
+              return ListTile(
+                leading: CircleAvatar(
+                  child: Text("${index + 1}"),
+                ),
+                title: Text(surah.name?.transliteration?.id ?? 'Error...'),
+                subtitle:
+                    Text("${surah.numberOfVerses} | ${surah.revelation!.id}"),
+                trailing: Text("${surah.name!.short}"),
+              );
+            },
+          );
+        },
       ),
     );
   }
