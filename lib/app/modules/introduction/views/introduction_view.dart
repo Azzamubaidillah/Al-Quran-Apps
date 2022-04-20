@@ -1,7 +1,10 @@
 import 'package:alquran/app/routes/app_pages.dart';
+import 'package:alquran/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/introduction_controller.dart';
 
@@ -15,22 +18,49 @@ class IntroductionView extends GetView<IntroductionController> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const Text(
-                "Sesibuk itukah kamu,\n sampai belum membaca quran?",
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: 15),
-              Image.network(
-                  "https://www.kindpng.com/picc/m/204-2048251_vector-illustration-of-islamic-muslim-koran-or-quran.png"),
-              SizedBox(
-                width: Get.width / 1.8,
-                child: ElevatedButton(
-                  onPressed: () => Get.offAllNamed(Routes.HOME),
-                  child: const Text("Get started"),
+              Text(
+                "Quran App",
+                style: GoogleFonts.poppins(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
+              Text(
+                "Learn Quran and\nRecite once everyday",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.poppins(
+                  color: greyColor,
+                  fontSize: 18,
+                ),
+              ),
+              SizedBox(
+                width: Get.width,
+                child:
+                    SvgPicture.asset("assets/illustrations/introduction.svg"),
+              ),
+              InkWell(
+                onTap: () {
+                  Get.offAllNamed(Routes.HOME);
+                },
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: marginDefault, horizontal: marginDefault * 2),
+                  decoration: BoxDecoration(
+                    color: orangeColor,
+                    borderRadius: BorderRadius.circular(15),
+                  ),
+                  child: Text(
+                    "Get started",
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18,
+                      color: blackColor,
+                    ),
+                  ),
+                ),
+              )
             ],
           ),
         ),
