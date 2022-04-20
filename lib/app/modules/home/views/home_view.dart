@@ -1,8 +1,12 @@
 import 'package:alquran/app/data/models/surah.dart';
 import 'package:alquran/app/routes/app_pages.dart';
+import 'package:alquran/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -11,10 +15,28 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    var brightness = SchedulerBinding.instance!.window.platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('HomeView'),
-        centerTitle: true,
+        title: Text(
+          'Quran App',
+          style: GoogleFonts.poppins(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: isDarkMode ? blackColor : mainColor,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.search,
+              color: isDarkMode ? blackColor : mainColor,
+            ),
+          )
+        ],
+        backgroundColor: Colors.transparent,
       ),
       body: FutureBuilder<List<Surah>>(
         future: controller.getAllSurah(),
@@ -30,19 +52,56 @@ class HomeView extends GetView<HomeController> {
             );
           }
 
-          return ListView.builder(
+          return ListView.separated(
+            separatorBuilder: (context, index) {
+              return const Padding(
+                padding: EdgeInsets.symmetric(horizontal: marginDefault),
+                child: Divider(
+                  color: greyColor,
+                ),
+              );
+            },
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {
               Surah surah = snapshot.data![index];
               return ListTile(
                 onTap: () => Get.toNamed(Routes.DETAIL_SURAH, arguments: surah),
-                leading: CircleAvatar(
-                  child: Text("${index + 1}"),
+                leading: Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    SvgPicture.asset("assets/icons/avatar_number.svg"),
+                    Text(
+                      "${index + 1}",
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
+                    )
+                  ],
                 ),
-                title: Text(surah.name?.transliteration?.id ?? 'Error...'),
-                subtitle:
-                    Text("${surah.numberOfVerses} | ${surah.revelation!.id}"),
-                trailing: Text("${surah.name!.short}"),
+                title: Text(
+                  surah.name?.transliteration?.id ?? 'Error...',
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 16,
+                  ),
+                ),
+                subtitle: Text(
+                  "${surah.revelation!.id} | ${surah.numberOfVerses} Ayat",
+                  style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500,
+                    color: greyColor,
+                  ),
+                ),
+                trailing: Text(
+                  "${surah.name!.short}",
+                  textAlign: TextAlign.right,
+                  style: GoogleFonts.amiri(
+                    fontWeight: FontWeight.bold,
+                    color: mainColor,
+                    fontSize: 20,
+                  ),
+                ),
               );
             },
           );
