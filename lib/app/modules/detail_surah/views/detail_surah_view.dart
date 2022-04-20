@@ -48,6 +48,8 @@ class DetailSurahView extends GetView<DetailSurahController> {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: surah.numberOfVerses,
                   itemBuilder: (context, index) {
+                    detail.Verse? ayat = snapshot.data?.verses?[index];
+
                     index = index + 1;
                     return Column(
                       children: [
@@ -76,7 +78,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                           ),
                         ),
                         const SizedBox(height: 10),
-                        const Text("Ayat ayat"),
+                        Text("${ayat?.text?.arab}"),
                         const SizedBox(height: 30),
                       ],
                     );

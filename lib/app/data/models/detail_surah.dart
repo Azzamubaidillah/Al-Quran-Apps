@@ -37,7 +37,9 @@ class DetailSurah {
         name: Name.fromJson(json["name"]),
         revelation: Revelation.fromJson(json["revelation"]),
         tafsir: DataTafsir.fromJson(json["tafsir"]),
-        preBismillah: PreBismillah.fromJson(json["preBismillah"]),
+        preBismillah: json["preBismillah"] == null
+            ? null
+            : PreBismillah.fromJson(json["preBismillah"]),
         verses: List<Verse>.from(json["verses"].map((x) => Verse.fromJson(x))),
       );
 
