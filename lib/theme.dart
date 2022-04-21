@@ -10,6 +10,7 @@ ThemeData lightThemeData(BuildContext context) {
       centerTitle: false,
       elevation: 0,
       color: mainColor,
+      foregroundColor: mainColor,
     ),
     iconTheme: const IconThemeData(color: blackColor),
     textTheme: GoogleFonts.interTextTheme(Theme.of(context).textTheme)

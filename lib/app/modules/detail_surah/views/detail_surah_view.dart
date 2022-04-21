@@ -51,6 +51,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                       style: GoogleFonts.poppins(
                         fontSize: 26,
                         fontWeight: FontWeight.w500,
+                        color: white,
                       ),
                     ),
                     Text(
@@ -58,6 +59,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                       style: GoogleFonts.poppins(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
+                        color: white,
                       ),
                     ),
                     const Padding(
@@ -73,6 +75,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                       "${surah.revelation!.id} | ${surah.numberOfVerses} Ayat"
                           .toUpperCase(),
                       style: GoogleFonts.poppins(
+                        color: white,
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                       ),
@@ -82,6 +85,9 @@ class DetailSurahView extends GetView<DetailSurahController> {
                   ],
                 ),
               ],
+            ),
+            SizedBox(
+              height: marginDefault,
             ),
             FutureBuilder<detail.DetailSurah>(
               future: controller.getDetailSurah(surah.number.toString()),

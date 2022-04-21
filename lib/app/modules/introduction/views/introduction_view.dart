@@ -42,7 +42,7 @@ class IntroductionView extends GetView<IntroductionController> {
               ),
               InkWell(
                 onTap: () {
-                  Get.offAllNamed(Routes.HOME);
+                  Get.offAllNamed(Routes.DASHBOARD);
                 },
                 child: Container(
                   padding: const EdgeInsets.symmetric(
