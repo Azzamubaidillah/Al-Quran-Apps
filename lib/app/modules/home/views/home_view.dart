@@ -15,8 +15,6 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    var brightness = SchedulerBinding.instance!.window.platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -24,7 +22,6 @@ class HomeView extends GetView<HomeController> {
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: isDarkMode ? blackColor : mainColor,
           ),
         ),
         actions: [
@@ -32,7 +29,6 @@ class HomeView extends GetView<HomeController> {
             onPressed: () {},
             icon: Icon(
               Icons.search,
-              color: isDarkMode ? blackColor : mainColor,
             ),
           )
         ],
