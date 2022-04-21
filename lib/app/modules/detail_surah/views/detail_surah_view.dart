@@ -83,15 +83,6 @@ class DetailSurahView extends GetView<DetailSurahController> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Text(surah.name?.transliteration?.id?.toUpperCase() ??
-                      'Error'),
-                ],
-              ),
-            ),
             FutureBuilder<detail.DetailSurah>(
               future: controller.getDetailSurah(surah.number.toString()),
               builder: (context, snapshot) {
@@ -113,36 +104,49 @@ class DetailSurahView extends GetView<DetailSurahController> {
                     detail.Verse? ayat = snapshot.data?.verses?[index];
 
                     index = index + 1;
-                    return Column(
-                      children: [
-                        Card(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 30),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(index.toString()),
-                                Row(
-                                  children: [
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.bookmark),
-                                    ),
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.play_arrow),
-                                    ),
-                                  ],
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: marginDefault / 2,
+                        horizontal: marginDefault,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  SvgPicture.asset(
+                                      "assets/icons/avatar_number.svg"),
+                                  Text(index.toString()),
+                                ],
+                              ),
+                              SizedBox(
+                                width: Get.width * 0.6,
+                                child: Text(
+                                  "${ayat?.text?.arab}",
+                                  textAlign: TextAlign.right,
+                                  style: GoogleFonts.amiri(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ],
+                              )
+                            ],
+                          ),
+                          SizedBox(height: marginDefault * 1.5),
+                          Text(
+                            "${ayat?.translation?.id}",
+                            style: GoogleFonts.poppins(
+                              color: greyColor,
                             ),
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        Text("${ayat?.text?.arab}"),
-                        const SizedBox(height: 30),
-                      ],
+                          Divider(),
+                        ],
+                      ),
                     );
                   },
                 );
