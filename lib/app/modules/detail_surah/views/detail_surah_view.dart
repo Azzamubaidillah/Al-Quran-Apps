@@ -2,7 +2,6 @@ import 'package:alquran/app/data/models/detail_surah.dart' as detail;
 import 'package:alquran/app/data/models/surah.dart';
 import 'package:alquran/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
@@ -86,7 +85,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: marginDefault,
             ),
             FutureBuilder<detail.DetailSurah>(
@@ -111,7 +110,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
 
                     index = index + 1;
                     return Padding(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         vertical: marginDefault / 2,
                         horizontal: marginDefault,
                       ),
@@ -143,14 +142,14 @@ class DetailSurahView extends GetView<DetailSurahController> {
                               )
                             ],
                           ),
-                          SizedBox(height: marginDefault * 1.5),
+                          const SizedBox(height: marginDefault * 1.5),
                           Text(
                             "${ayat?.translation?.id}",
                             style: GoogleFonts.poppins(
                               color: greyColor,
                             ),
                           ),
-                          Divider(),
+                          const Divider(),
                         ],
                       ),
                     );
