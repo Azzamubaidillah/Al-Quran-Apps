@@ -22,12 +22,6 @@ class DetailSurahView extends GetView<DetailSurahController> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.search),
-          )
-        ],
         backgroundColor: Colors.transparent,
       ),
       body: Padding(

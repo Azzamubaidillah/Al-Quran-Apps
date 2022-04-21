@@ -1,6 +1,7 @@
 import 'package:alquran/app/data/models/response_shalat.dart' as waktu;
 import 'package:alquran/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
@@ -22,6 +23,8 @@ class PrayTimeView extends GetView<PrayTimeController> {
 
   @override
   Widget build(BuildContext context) {
+    var brightness = SchedulerBinding.instance!.window.platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
     return Scaffold(
       body: SafeArea(
         child: ListView(
@@ -67,7 +70,7 @@ class PrayTimeView extends GetView<PrayTimeController> {
                         style: GoogleFonts.poppins(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: blackColor,
+                          color: isDarkMode ? white : blackColor,
                         ),
                       ),
                       StreamBuilder(
@@ -80,6 +83,7 @@ class PrayTimeView extends GetView<PrayTimeController> {
                               style: GoogleFonts.poppins(
                                 fontSize: 44,
                                 fontWeight: FontWeight.w600,
+                                color: isDarkMode ? white : blackColor,
                               ),
                             );
                           }
@@ -88,7 +92,7 @@ class PrayTimeView extends GetView<PrayTimeController> {
                             style: GoogleFonts.poppins(
                               fontSize: 44,
                               fontWeight: FontWeight.w600,
-                              color: blackColor,
+                              color: isDarkMode ? white : blackColor,
                             ),
                           );
                         },
@@ -171,6 +175,9 @@ class SholatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var brightness = SchedulerBinding.instance!.window.platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
+
     return Container(
       width: Get.width,
       height: 50,
@@ -179,7 +186,10 @@ class SholatCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: marginDefault),
         child: Row(
           children: [
-            SvgPicture.asset("assets/icons/$icon.svg"),
+            SvgPicture.asset(
+              "assets/icons/$icon.svg",
+              color: isDarkMode ? white : blackColor,
+            ),
             const SizedBox(width: marginDefault),
             Text(
               sholat,
@@ -196,9 +206,7 @@ class SholatCard extends StatelessWidget {
         ),
       ),
       decoration: BoxDecoration(
-        color: const Color(
-          0xffffffff,
-        ),
+        color: isDarkMode ? darkGrey : white,
         borderRadius: BorderRadius.circular(12),
         boxShadow: const [
           BoxShadow(

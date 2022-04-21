@@ -24,14 +24,6 @@ class HomeView extends GetView<HomeController> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-            ),
-          )
-        ],
         backgroundColor: Colors.transparent,
       ),
       body: FutureBuilder<List<Surah>>(
