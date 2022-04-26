@@ -2,7 +2,6 @@ import 'package:alquran/app/data/models/surah.dart';
 import 'package:alquran/app/routes/app_pages.dart';
 import 'package:alquran/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
@@ -18,7 +17,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Quran App',
+          'Quro',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,

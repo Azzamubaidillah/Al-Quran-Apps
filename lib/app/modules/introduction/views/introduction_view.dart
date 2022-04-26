@@ -21,7 +21,7 @@ class IntroductionView extends GetView<IntroductionController> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Text(
-                "Quran App",
+                "Quro",
                 style: GoogleFonts.poppins(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
