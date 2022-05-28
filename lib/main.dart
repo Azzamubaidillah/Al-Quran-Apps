@@ -1,4 +1,4 @@
-import 'package:alquran/app/modules/home/controllers/home_controller.dart';
+  import 'package:alquran/app/modules/home/controllers/home_controller.dart';
 import 'package:alquran/app/modules/pray_time/controllers/pray_time_controller.dart';
 import 'package:alquran/theme.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,7 @@ void main() {
     FutureBuilder(
       builder: (context, snapshot) {
         return GetMaterialApp(
+          debugShowCheckedModeBanner: false,
           title: "Application",
           theme: lightThemeData(context),
           darkTheme: darkThemeData(context),

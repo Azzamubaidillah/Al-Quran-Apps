@@ -16,7 +16,7 @@ class DetailSurahView extends GetView<DetailSurahController> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Quran App',
+          'Quro',
           style: GoogleFonts.poppins(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -34,7 +34,8 @@ class DetailSurahView extends GetView<DetailSurahController> {
                 SizedBox(
                   width: Get.width,
                   child: Image.asset(
-                      "assets/illustrations/detail_illustrations.png"),
+                    "assets/illustrations/detail_illustrations.png",
+                  ),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
