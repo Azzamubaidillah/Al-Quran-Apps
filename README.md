@@ -1,16 +1,13 @@
-# alquran
+# Quro
 
-A new Flutter project.
+About
+Al- Quran apps or we called it Quro is a Quran mobile application with arabic and translations also with feature such pray time for Jakarta time-zone (for now). Built using Flutter and Get-X framework also using GET API from api.quran.sutanlab.id and api.pray.zone
 
-## Getting Started
+## This is how it looks
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+ <img src="https://github.com/Azzamubaidillah/Al-Quran-Apps/blob/main/screenshot/ss1.png" width="350" alt="accessibility text">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+ <img src="https://github.com/Azzamubaidillah/Al-Quran-Apps/blob/main/screenshot/ss2.png" width="350" alt="accessibility text">
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ <img src="https://github.com/Azzamubaidillah/Al-Quran-Apps/blob/main/screenshot/ss3.png" width="350" alt="accessibility text">
